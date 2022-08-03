@@ -5,6 +5,7 @@ import java.util.Set;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.exam.helper.UserFoundException;
 import com.exam.model.Role;
 import com.exam.model.User;
 import com.exam.model.UserRole;
@@ -76,9 +78,9 @@ public class UserController {
 		return this.userService.updateUser(user);
 	}
 	
-//	@ExceptionHandler(UserNotFoundException.class)
-//	public ResponseEntity<?> exceptionHandler(UserNotFoundException ex){
-//		return ResponseEntity;
+//	@ExceptionHandler(UserFoundException.class)
+//	public ResponseEntity<?> exceptionHandler(UserFoundException ex){
+//		return ResponseEntit<?>; 
 //	}
 	
 }
