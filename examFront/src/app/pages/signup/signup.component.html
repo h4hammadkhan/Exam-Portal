@@ -1,74 +1,76 @@
 <div class="bootstrap-wrapper">
     <div class="container">
         <div class="row mt">
-            <div class="container text-center">
-                <img src="../../../assets/logo.PNG" alt="">
-            </div>
             <div class="col-md-6 offset-md-3">
-                <h1 class="text-center">Register Here !!!</h1>
-
-                <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
-                    <!-- {{user | json}} -->
-                    <!-- User name  field-->
-                    <mat-form-field class="full-width" appearance="outline">
-                        <mat-label>User Name</mat-label>
-                        <input formControlName="userName" matInput placeholder="Enter Username" required="">
-                        <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
-                        <mat-hint>Username must be unique</mat-hint>
-                        <mat-error *ngIf=" fields['userName'].errors?.['required']">User name is required</mat-error>
-                    </mat-form-field>   
-
-                     <!-- User password field-->
-                    <mat-form-field class="full-width" appearance="outline">
-                        <mat-label>User Password</mat-label>
-                        <input formControlName="password" matInput [type]="hide ? 'password' : 'text'" required="">
-                        <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                        </button>
-                        <mat-error *ngIf=" fields['password'].errors?.['required']">Password is required</mat-error>
-                        <mat-error *ngIf=" fields['password'].errors?.['minlength']">password must minimum of 8 characters longer</mat-error>
-                        <!-- <input [(ngModel)]="user.password" name="password" type="password" matInput placeholder="Enter Password">   -->
-                    </mat-form-field>
-
-                     <!-- First name field-->
-                    <mat-form-field class="full-width" appearance="outline">
-                        <mat-label>First Name</mat-label>
-                        <input formControlName="firstName" matInput placeholder="Enter First Name" required="">  
-                        <mat-error *ngIf=" fields['firstName'].errors?.['required']">first name is required</mat-error>
-
-                    </mat-form-field>
-
-                     <!-- Last name field-->
-                    <mat-form-field class="full-width" appearance="outline">
-                        <mat-label>Last Name</mat-label>
-                        <input formControlName="lastName" matInput placeholder="Enter Last Name" required="">
-                        <mat-error *ngIf=" fields['lastName'].errors?.['required']">last name is required</mat-error>                        
-
-                    </mat-form-field>
-                                    
-                     <!-- Email field-->
-                    <mat-form-field class="full-width" appearance="outline">
-                        <mat-label>Email Address</mat-label>
-                        <input type="email" formControlName="email"  matInput placeholder="Enter Email Address" required=""> 
-                        <mat-error *ngIf=" fields['email'].errors?.['required']">Email Address is required</mat-error>
-                        <mat-error *ngIf=" fields['email'].errors?.['email']">email address is not valid</mat-error>
-
-                    </mat-form-field>
-
-                     <!-- Phone no field-->
-                    <mat-form-field class="full-width" appearance="outline">
-                        <mat-label>Phone Number</mat-label>
-                        <input formControlName="phone" type="number" matInput placeholder="Enter Phone Number" required="">  
-                        <mat-error *ngIf=" fields['phone'].errors?.['required']">phone number is required</mat-error>
-
-                    </mat-form-field>
-
+                <mat-card>
                     <div class="container text-center">
-                        <button type="submit" mat-raised-button color="primary">Register</button>
-                        <button class="mt-l" (click)="clr()" mat-raised-button color="warn">Clear</button>
+                        <img src="../../../assets/logo.PNG" alt="">
                     </div>
+                    <h1 class="text-center">Register Here !!!</h1>
 
-                </form>
+                    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+                        <!-- {{user | json}} -->
+                        <!-- User name  field-->
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>User Name</mat-label>
+                            <input formControlName="userName" matInput placeholder="Enter Username">
+                            <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+                            <mat-hint>Username must be unique</mat-hint>
+                            <mat-error *ngIf="getFields['userName'].untouched || getFields['userName'].errors?.['required'] ">User name is required</mat-error>
+                        </mat-form-field>   
+
+                        <!-- User password field-->
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>User Password</mat-label>
+                            <input formControlName="password" matInput [type]="hide ? 'password' : 'text'" required="">
+                            <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                            <mat-error *ngIf="getFields['userName'].untouched || getFields['password'].errors?.['required'] ">Password is required</mat-error>
+                            <mat-error *ngIf="getFields['userName'].errors?.['untouched'] || getFields['password'].errors?.['minlength']">password must minimum of 8 characters longer</mat-error>
+                            <!-- <input [(ngModel)]="user.password" name="password" type="password" matInput placeholder="Enter Password">   -->
+                        </mat-form-field>
+
+                        <!-- First name field-->
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>First Name</mat-label>
+                            <input formControlName="firstName" matInput placeholder="Enter First Name" required="">  
+                            <mat-error *ngIf="getFields['userName'].errors?.['untouched'] || getFields['firstName'].errors?.['required']">first name is required</mat-error>
+
+                        </mat-form-field>
+
+                        <!-- Last name field-->
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Last Name</mat-label>
+                            <input formControlName="lastName" matInput placeholder="Enter Last Name" required="">
+                            <mat-error *ngIf="getFields['userName'].errors?.['untouched'] || getFields['lastName'].errors?.['required']">last name is required</mat-error>                        
+
+                        </mat-form-field>
+                                        
+                        <!-- Email field-->
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Email Address</mat-label>
+                            <input type="email" formControlName="email"  matInput placeholder="Enter Email Address" required=""> 
+                            <mat-error *ngIf=" getFields['email'].errors?.['required']">Email Address is required</mat-error>
+                            <mat-error *ngIf=" getFields['email'].errors?.['email']">email address is not valid</mat-error>
+
+                        </mat-form-field>
+
+                        <!-- Phone no field-->
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Phone Number</mat-label>
+                            <input formControlName="phone" type="number" matInput placeholder="Enter Phone Number" required="">  
+                            <mat-error *ngIf="getFields['userName'].errors?.['untouched'] || getFields['phone'].errors?.['required']">phone number is required</mat-error>
+
+                        </mat-form-field>
+
+                        <div class="container text-center">
+                            <button type="submit" mat-raised-button [disabled]="userForm.invalid" color="primary">Register</button>
+                            <button class="mt-l" (click)="clr()" mat-raised-button color="warn">Clear</button>
+                        </div>
+                       
+                    </form>
+                </mat-card>
             </div>
         </div>
     </div>

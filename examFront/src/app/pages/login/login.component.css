@@ -1,0 +1,19 @@
+
+
+img{
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+
+.mt{
+    margin-top: 20px;
+}
+
+.full-width{
+    width: 100%;
+}
+
+.mt-l{
+    margin-left: 20px;
+}

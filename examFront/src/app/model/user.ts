@@ -7,4 +7,6 @@ export class User {
     lastName!: string;
     email!: string;
     phone!: string;
+    enabled!: boolean;
+    profile!: string;
 }

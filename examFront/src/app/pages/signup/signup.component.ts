@@ -40,19 +40,13 @@ export class SignupComponent implements OnInit {
    
   }
 
-  get fields(){
+  get getFields(){
     return this.userForm.controls;
   }
 
   clr(){
-    this.userForm = this.formBuilder.group({
-      userName:'',
-      password:'',
-      firstName:'',
-      lastName:'',
-      email:'',
-      phone:'',
-    })
+    // clear all the field
+    this.userForm.reset();
   }
 
   onSubmit(){
@@ -71,6 +65,7 @@ export class SignupComponent implements OnInit {
         console.log(data);
         // alert("Success");
         Swal.fire("successfully Done !!",`${data.userName} is registered `,"success");
+        this.userForm.reset();
       },
       (error)=>{
         console.log(error);
@@ -81,9 +76,7 @@ export class SignupComponent implements OnInit {
           horizontalPosition: 'right',
         })
       }
-    )
-    
-    
+    )    
   }
 
 

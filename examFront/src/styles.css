@@ -3,9 +3,56 @@
 @import '~bootstrap-grid-only-css/dist/css/bootstrap-grid.min.css';
 
 
-html, body { height: 100%; }
+html, 
+body { 
+    height: 100%;
+    background: #f5f5f5;
+}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .text-center{
     text-align: center;
+}
+
+.text-deco{
+    text-decoration: none;
+}
+
+.mt1rem{
+    margin-top: 1rem;
+}
+.mb1rem{
+    margin-bottom: 1rem;
+}
+.mr1rem{
+    margin-right: 1rem;
+}
+.ml1rem{
+    margin-left: 1rem;
+}
+
+.mt20px{
+    margin-top: 20px;
+}
+.mb20px{
+    margin-bottom: 20px;
+}
+.mr20px{
+    margin-right: 20px;
+}
+.ml20px{
+    margin-left: 20px;
+}
+
+.mt40px{
+    margin-top: 40px;
+}
+.mb40px{
+    margin-bottom: 40px;
+}
+.mr40px{
+    margin-right: 40px;
+}
+.ml40px{
+    margin-left: 40px;
 }

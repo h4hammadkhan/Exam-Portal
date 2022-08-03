@@ -1,1 +1,46 @@
-<p>login works!</p>
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row mt">
+            <div class="col-md-6 offset-md-3">
+                <mat-card>
+                <div class="container text-center">
+                    <img src="../../../assets/logo.PNG" alt="">
+                </div>
+                    <h1 class="text-center">Login Here !!!</h1>
+
+                    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+                        <!-- {{loginForm.value| json}} -->
+                        <!-- User name  field-->
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>User Name</mat-label>
+                            <input formControlName="userName" matInput placeholder="Enter Username">
+                            <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+                            <mat-hint>Valid user name</mat-hint>
+                            <mat-error *ngIf="getFields['userName'].errors?.['required']">User name is required</mat-error>
+                        </mat-form-field>   
+
+
+                        <!-- User password field-->
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>User Password</mat-label>
+                            <input formControlName="password" matInput [type]="hide ? 'password' : 'text'" required="">
+                            <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                            <mat-error *ngIf=" getFields['password'].errors?.['required']">Password is required</mat-error>
+                            <!--<mat-error *ngIf=" getFields['password'].errors?.['minlength']">password must minimum of 8 characters longer</mat-error> -->
+                            <!-- <input [(ngModel)]="user.password" name="password" type="password" matInput placeholder="Enter Password">   -->
+                        </mat-form-field>
+
+                        
+                        <div class="container text-center">
+                            <button type="submit" mat-raised-button color="primary">Login</button>
+                            <button class="mt-l" mat-raised-button color="warn">Clear</button>
+                        </div>
+
+                    </form>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

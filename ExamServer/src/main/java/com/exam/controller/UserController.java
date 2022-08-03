@@ -3,9 +3,12 @@ package com.exam.controller;
 import java.util.HashSet;
 import java.util.Set;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,11 +29,19 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
+	@Autowired
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
+	
+	
 	// post / create user 
 	@PostMapping("/")
 	public User CreateUser(@RequestBody User user) throws Exception {
 		
-		user.setProfile("default.png");
+		user.setProfile("assets/profile/default.png");
+		
+		//encoding password with bCryptPasswordEncoder
+		user.setPassword(this.bCryptPasswordEncoder.encode(user.getPassword()));
+		
 		Set<UserRole> roles = new HashSet<>();
 		
 		Role role = new Role();
@@ -64,5 +75,10 @@ public class UserController {
 	public User updateUser(@RequestBody User user) {
 		return this.userService.updateUser(user);
 	}
+	
+//	@ExceptionHandler(UserNotFoundException.class)
+//	public ResponseEntity<?> exceptionHandler(UserNotFoundException ex){
+//		return ResponseEntity;
+//	}
 	
 }

@@ -1,1 +1,27 @@
-<p>navbar works!</p>
+<mat-toolbar color="primary">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <a mat-button routerLink="/">
+        <h1>ExamPortal</h1>
+    </a>
+
+    <span class="example-spacer"> </span>
+    <a *ngIf="!isLoggedIn" mat-button routerLink="/login"  class="example-icon" aria-label="Example icon-button with heart icon">
+        Login
+        <!-- <mat-icon>login</mat-icon> -->
+    </a>
+    <a *ngIf="!isLoggedIn" mat-button routerLink="/signup"  class="example-icon" aria-label="Example icon-button with share icon">
+        Register
+        <!-- <mat-icon>person_add</mat-icon> -->
+    </a>
+
+    <button *ngIf="isLoggedIn" mat-button [matMenuTriggerFor]="menu">
+        <img src="{{user.profile}}" alt="">
+        <small style="margin-left: 5px;">{{user.userName}} </small>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item>Profile</button>
+        <button (click)="logout()" mat-menu-item>Logout</button>
+      </mat-menu>
+</mat-toolbar>
