@@ -30,6 +30,10 @@ export class LoginComponent implements OnInit {
     return this.loginForm.controls;
   }
 
+  clr(){
+    this.loginForm.reset();
+  }
+
   onLogin(){
     if(this.loginForm.invalid){
       return;

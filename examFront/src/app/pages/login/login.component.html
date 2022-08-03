@@ -34,8 +34,8 @@
 
                         
                         <div class="container text-center">
-                            <button type="submit" mat-raised-button color="primary">Login</button>
-                            <button class="mt-l" mat-raised-button color="warn">Clear</button>
+                            <button type="submit" [disabled]="loginForm.invalid" mat-raised-button color="primary">Login</button>
+                            <button class="mt-l" (click)="clr()" mat-raised-button color="warn">Clear</button>
                         </div>
 
                     </form>
