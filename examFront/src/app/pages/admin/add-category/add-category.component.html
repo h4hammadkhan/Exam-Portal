@@ -1,0 +1,35 @@
+<mat-card>
+    <h1 mat-subheader>Add New Category</h1>
+    <mat-card-content>
+      <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-2 col-sm-10 offset-1">
+                <mat-card>
+                    <h2>Add Category</h2>
+                    <form [formGroup]="cateForm" (ngSubmit)="addCategory()">
+
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Title</mat-label>
+                            <input autofocus formControlName="title" matInput placeholder="Enter category title">
+                            <!-- <mat-error *ngIf="getFields['userName'].untouched || getFields['userName'].errors?.['required'] ">User name is required</mat-error> -->
+                            <mat-error *ngIf="getFields['title'].errors?.['required'] || getFields['title'].errors?.['untouched'] ">title is required</mat-error>
+                        </mat-form-field>   
+
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Description</mat-label>
+                            <textarea formControlName="description" matInput placeholder="Enter category description" rows="10"></textarea>
+                            <!-- <mat-error *ngIf="getFields['userName'].untouched || getFields['userName'].errors?.['required'] ">User name is required</mat-error> -->
+                            <mat-error *ngIf="getFields['description'].errors?.['required'] || getFields['description'].errors?.['untouched'] ">description is required</mat-error>
+                        </mat-form-field>   
+
+                        <div class="container text-center">
+                            <button mat-raised-button color="primary" type="submit">Add</button>
+                            <button mat-raised-button color="warn" class="leftM" (click)="clr()" >clear</button>
+                        </div>
+                    </form>
+                </mat-card>
+            </div>
+        </div>
+      </div>
+    </mat-card-content>
+</mat-card>

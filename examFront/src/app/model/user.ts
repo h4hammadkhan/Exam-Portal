@@ -9,4 +9,5 @@ export class User {
     phone!: string;
     enabled!: boolean;
     profile!: string;
+    authorities!:[{authority:string}];
 }

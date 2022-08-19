@@ -31,6 +31,19 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     margin-left: 1rem;
 }
 
+.mt10px{
+    margin-top: 10px;
+}
+.mb10px{
+    margin-bottom: 10px;
+}
+.mr10px{
+    margin-right: 10px;
+}
+.ml10px{
+    margin-left: 10px;
+}
+
 .mt20px{
     margin-top: 20px;
 }
@@ -55,4 +68,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 .ml40px{
     margin-left: 40px;
+}
+
+.full-width{
+    width: 100%;
 }

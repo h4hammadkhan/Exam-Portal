@@ -8,7 +8,7 @@
 
     <span class="example-spacer"> </span>
     <a *ngIf="!isLoggedIn" mat-button routerLink="/login"  class="example-icon" aria-label="Example icon-button with heart icon">
-        Login
+      Login
         <!-- <mat-icon>login</mat-icon> -->
     </a>
     <a *ngIf="!isLoggedIn" mat-button routerLink="/signup"  class="example-icon" aria-label="Example icon-button with share icon">
@@ -21,7 +21,7 @@
         <small style="margin-left: 5px;">{{user.userName}} </small>
     </button>
     <mat-menu #menu="matMenu">
-        <button mat-menu-item>Profile</button>
-        <button (click)="logout()" mat-menu-item>Logout</button>
+        <button mat-menu-item routerLink="/admin/profile"><mat-icon mat-list-icon>account_circle</mat-icon>Profile</button>
+        <button (click)="logout()" mat-menu-item><mat-icon mat-list-icon>logout</mat-icon>Logout</button>
       </mat-menu>
 </mat-toolbar>

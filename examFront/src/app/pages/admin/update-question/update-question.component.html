@@ -1,0 +1,91 @@
+<mat-card>
+  <h1 mat-subheader>Updating Question</h1>
+  <div class="bootstrap-wrapper">
+    <!-- <div class="container"> -->
+      <div class="row">
+        <div class="col-md-10 offset-1">
+          <mat-card>
+            
+            <mat-card-header>
+              <mat-card-subtitle>
+                Edit the details of the Question
+              </mat-card-subtitle>
+            </mat-card-header>
+
+            <mat-card-content>
+
+              <form [formGroup]="updateQuestionForm" (ngSubmit)="updateQuestion()">
+                
+                <input type="text" formControlName="questionId" hidden>
+
+                <ckeditor class="height" [editor]="Editor" formControlName="content" data="<h1>hhhhh</h1>"></ckeditor>
+                <mat-error *ngIf="fields['content'].errors?.['required']">Content is Required</mat-error>
+                
+                  
+
+                <div class="row mt20px">
+                  <div class="col-md-6">
+                    <mat-form-field appearance="outline" class="full-width">
+                      <mat-label>Option1</mat-label>
+                      <input type="text" matInput formControlName="option1" placeholder="Enter Option 1">
+                      <mat-error *ngIf="fields['option1'].errors?.['required']">Option 1 is required</mat-error>
+
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-6">
+                    <mat-form-field appearance="outline" class="full-width">
+                      <mat-label>Option2</mat-label>
+                      <input type="text" matInput formControlName="option2" placeholder="Enter Option 2">
+                      <mat-error *ngIf="fields['option2'].errors?.['required']">Option 2 is required</mat-error>
+
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <mat-form-field appearance="outline" class="full-width">
+                      <mat-label>Option3</mat-label>
+                      <input type="text" matInput formControlName="option3" placeholder="Enter Option 3">
+                      <mat-error *ngIf="fields['option3'].errors?.['required']">Option 3 is required</mat-error>
+
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-6">
+                    <mat-form-field appearance="outline" class="full-width">
+                      <mat-label>Option4</mat-label>
+                      <input type="text" matInput formControlName="option4" placeholder="Enter Option 4">
+                      <mat-error *ngIf="fields['option4'].errors?.['required']">Option 4 is required</mat-error>
+
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Select Answer</mat-label> 
+                  <mat-select formControlName="answer">
+                    <mat-option *ngIf="fields['option1'].value" [value]="fields['option1'].value">{{fields['option1'].value}}</mat-option>
+                    <mat-option *ngIf="fields['option2'].value" [value]="fields['option2'].value">{{fields['option2'].value}}</mat-option>
+                    <mat-option *ngIf="fields['option3'].value" [value]="fields['option3'].value">{{fields['option3'].value}}</mat-option>
+                    <mat-option *ngIf="fields['option4'].value" [value]="fields['option4'].value">{{fields['option4'].value}}</mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="fields['answer'].errors?.['required']">answer is required</mat-error>
+                </mat-form-field>
+
+                <div class="container text-center">
+                  <button mat-raised-button color="primary" type="submit" class="mr20px">Update</button>
+                  <button mat-raised-button color="warn" (click)="loadQuestionById()">Reset</button>
+                </div>
+
+              </form>
+
+            </mat-card-content>
+
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  <!-- </div> -->
+</mat-card>
+
+<!-- {{updateQuestionForm.value | json}} -->

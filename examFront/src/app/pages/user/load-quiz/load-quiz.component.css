@@ -1,0 +1,15 @@
+.truncate{
+    display: inline-block;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.example-header-image {
+    background-image: url('../../../../assets/quiz.png');
+    background-size: cover;
+}
+.noMargin{
+    margin: 0;
+}

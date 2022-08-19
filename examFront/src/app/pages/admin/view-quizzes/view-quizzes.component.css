@@ -1,0 +1,25 @@
+.example-header-image {
+    background-image: url('../../../../assets/test.png');
+    background-size: cover;
+}
+
+.mr{
+    margin-right: 10px;
+}
+
+.green{
+    background-color: green;
+}
+
+.pink{
+    background-color: hotpink;
+}
+
+.greenColor{
+    color: green;
+}
+
+.display{
+    display: flex;
+    justify-content: space-between;
+}
