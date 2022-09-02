@@ -42,6 +42,16 @@ import { UpdateProfileComponent } from './pages/admin/update-profile/update-prof
 import { UserDashboardComponent } from './pages/user/user-dashboard/user-dashboard.component'
 import { SidebarComponent as userSidebar } from './pages/user/sidebar/sidebar.component';
 import { LoadQuizComponent } from './pages/user/load-quiz/load-quiz.component'
+import { InstructionsComponent } from './pages/user/instructions/instructions.component'
+import { StartTestComponent } from './pages/user/start-test/start-test.component';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { UserProfileComponent } from './pages/user/user-profile/user-profile.component';
+import {MatBadgeModule} from '@angular/material/badge';
+import { ViewAllQuestionsComponent } from 'src/app/pages/admin/view-all-questions/view-all-questions.component'
+import { TestResultComponent } from 'src/app/pages/user/test-result/test-result.component'
 
 
 @NgModule({
@@ -69,6 +79,11 @@ import { LoadQuizComponent } from './pages/user/load-quiz/load-quiz.component'
     UserDashboardComponent,
     userSidebar,
     LoadQuizComponent,
+    InstructionsComponent,
+    StartTestComponent,
+    UserProfileComponent,
+    ViewAllQuestionsComponent,
+    TestResultComponent,
     
   ],
   imports: [
@@ -91,6 +106,15 @@ import { LoadQuizComponent } from './pages/user/load-quiz/load-quiz.component'
     MatSlideToggleModule,
     MatSelectModule,
     CKEditorModule,
+    MatRadioModule,
+    MatProgressSpinnerModule,
+    NgxUiLoaderModule,
+    MatProgressBarModule,
+    MatBadgeModule,
+    NgxUiLoaderHttpModule.forRoot({
+      showForeground:true,
+    }),
+    
 
     
 

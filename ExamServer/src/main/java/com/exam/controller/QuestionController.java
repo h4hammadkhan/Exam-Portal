@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,10 +57,20 @@ public class QuestionController {
 //		return ResponseEntity.ok(questionsOfQuiz);
 		Quiz quiz = this.quizService.getQuiz(quizId);
 		Set<Question> questions = quiz.getQuestions();
-		List list = new ArrayList(questions);
+		List<Question> list = new ArrayList(questions);
 		if(list.size() > Integer.parseInt(quiz.getNumberOfQuestions())) {
-			list = list.subList(0, Integer.parseInt(quiz.getNumberOfQuestions()+1));
+			list = list.subList(0, Integer.parseInt(quiz.getNumberOfQuestions()));
 		}
+		
+		list.forEach(q->{
+			q.setAnswer("");
+		});
+		
+		
+		if(list.size() == 0) {
+			return ResponseEntity.ok("data not found !!");
+		}
+	
 		Collections.shuffle(list);
 		return ResponseEntity.ok(list);
 	}
@@ -74,8 +86,6 @@ public class QuestionController {
 		
 //			return ResponseEntity.ok(list);
 		}
-	
-	
 	
 	//get all questions
 	@GetMapping("/")
@@ -95,6 +105,33 @@ public class QuestionController {
 	@DeleteMapping("/{questionId}")
 	public void deleteQuestion(@PathVariable("questionId") Long questionId) {
 		this.questionService.deleteQuestion(questionId);
+	}
+	
+	// check quiz
+	@PostMapping("/check-quiz")
+	public ResponseEntity<?> checkQuiz(@RequestBody List<Question> questions){
+		System.out.println(questions);
+		double marksGot = 0;
+		int correctAnswer = 0;
+		int attempted = 0;
+		for(Question q: questions){
+			System.out.println(q.getGivenAnswer()+":"+q.getAnswer());
+			//single question 
+			Question question = this.questionService.getOneQuestion(q.getQuestionId());
+			if(question.getAnswer().equals(q.getGivenAnswer()) ) 
+			{
+				// correct
+				correctAnswer++;
+				double singleQuesMark = Double.parseDouble(questions.get(0).getQuiz().getMaxMarks())/questions.size();
+				marksGot+=singleQuesMark;
+			}
+			if(q.getGivenAnswer() != null) {
+				attempted++;
+			}
+		};
+		
+		Map<String, Object> result = Map.of("marksGot",marksGot,"correctAnswer",correctAnswer,"attempted",attempted);
+		return ResponseEntity.ok(result);
 	}
 	
 	

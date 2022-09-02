@@ -32,4 +32,21 @@ export class QuizService {
   public updateQuiz(quiz:Quiz){
     return this.http.post(`${baseUrl}/quiz/`,quiz);
   }
+
+  //get quizzes of category
+  public getQuizzesOfCategory(categoryId:number){
+    return this.http.get(`${baseUrl}/quiz/category/all/${categoryId}`);
+  }
+
+  // get active quizzes
+  public getActiveQuizzes():Observable<Quiz[]>{
+    return this.http.get<Quiz[]>(`${baseUrl}/quiz/active-quiz`);
+  }
+
+  // get active quizzes of the category
+  public getActiveQuizzesOfCategory(categoryId:number):Observable<Quiz[]>{
+    return this.http.get<Quiz[]>(`${baseUrl}/quiz/category/active-quiz/${categoryId}`);
+  }
+
+
 }

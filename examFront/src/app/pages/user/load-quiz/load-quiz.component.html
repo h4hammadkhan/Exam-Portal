@@ -1,6 +1,7 @@
 <div class="bootstrap-wrapper">
     <div class="container-fluid">
         <h1 mat-subheader>Available Quizzes</h1>
+        <!-- <div class="row" *ngIf="length; else notFound"> -->
         <div class="row" *ngIf="quizzes">
             <div class="col-md-4" *ngFor="let q of quizzes">
 
@@ -23,11 +24,14 @@
                         <button mat-button color="primary" class="noMargin">View</button>
                         <button mat-button color="primary" class="noMargin">Questions : {{q.numberOfQuestions}}</button>
                         <button mat-button color="primary" class="noMargin">Marks : {{q.maxMarks}}</button>
-                        <button mat-button color="warn" class="noMargin">Start</button>
+                        <button mat-button color="warn" class="noMargin" [routerLink]="'/user-dashboard/instructions/'+q.quizId">Start</button>
                     </mat-card-actions>
                 </mat-card>
 
             </div>
         </div>
+        
+            <app-not-found *ngIf="quizzes?.length == 0"></app-not-found>
+        
     </div>
 </div>

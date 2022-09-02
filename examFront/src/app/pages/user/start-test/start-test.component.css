@@ -1,0 +1,54 @@
+.mt20px{
+    margin-top: 20px;
+}
+.mt10px{
+    margin-top: 10px;
+}
+.ml16px{
+    margin-left: 16px;
+}
+
+.inline{
+    display: inline-block;
+}
+
+.paddLeftDec{
+    padding-left: 25px;   
+}
+
+.cover{
+    background-size: cover;
+}
+
+.flex{
+    display: flex;
+    align-items: center;
+}
+
+.sticky{
+    position: sticky;
+    top: 60px;
+    z-index: 50;
+}
+
+
+/* .table{
+    width: 100%;
+}
+.table, th, td{
+    text-align: center;
+}
+.table, th, td{
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.table tr thead:first-of-type(1){
+    width: 20px;
+}
+.table tr thead:first-of-type(2){
+    width: 100px;
+}
+ */

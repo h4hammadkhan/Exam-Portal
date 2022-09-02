@@ -48,6 +48,8 @@ export class LoginComponent implements OnInit {
         
         //Login... set token into local storage
         this.loginService.loginUser(data.token);
+        console.log(this.loginService.getToken());
+        
         //get current logged user
         this.loginService.getCurrentUser().subscribe(
           (user:any)=>{
@@ -62,7 +64,7 @@ export class LoginComponent implements OnInit {
                }
                else if(this.loginService.getRole()=='NORMAL'){
                 // redirecting... user dashboard
-                this.router.navigate(['/user-dashboard']);
+                this.router.navigate(['/user-dashboard/',0]);
                 this.loginService.loginStatusSubject.next(true);
 
 
@@ -77,7 +79,7 @@ export class LoginComponent implements OnInit {
         );
       },
       (error)=>{
-        console.log("error:",error);
+        console.log("error:",error);  
         this.snack.open('Invalid Details !! Try again','',{
           duration: 3000,
         });           

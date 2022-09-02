@@ -21,6 +21,10 @@ import { UpdateQuestionComponent } from './pages/admin/update-question/update-qu
 import { UpdateCategoryComponent } from './pages/admin/update-category/update-category.component';
 import { UpdateProfileComponent } from './pages/admin/update-profile/update-profile.component';
 import { LoadQuizComponent } from './pages/user/load-quiz/load-quiz.component';
+import { InstructionsComponent } from './pages/user/instructions/instructions.component';
+import { StartTestComponent } from './pages/user/start-test/start-test.component';
+import { UserProfileComponent } from './pages/user/user-profile/user-profile.component';
+import { ViewAllQuestionsComponent } from './pages/admin/view-all-questions/view-all-questions.component';
 
 const routes: Routes = [
   {
@@ -72,6 +76,10 @@ const routes: Routes = [
         component: ViewQuizzesComponent,
       },
       {
+        path:'questions',
+        component: ViewAllQuestionsComponent,
+      },
+      {
         path:'add-quiz',
         component: AddQuizComponent,
       },
@@ -101,12 +109,28 @@ const routes: Routes = [
     canActivate: [UserGuard],
     children:[
       {
+        path: 'profile',
+        component: UserProfileComponent,
+      },
+      {
         path:':cateId',
         component:LoadQuizComponent,
       },
+      {
+        path: 'instructions/:quizId',
+        component:InstructionsComponent,
+      },
+
     ]
     
   },
+
+  {
+    path: 'start-test/:quizId',
+    component: StartTestComponent,
+    canActivate: [UserGuard],
+  },
+  
 ];
 
 @NgModule({

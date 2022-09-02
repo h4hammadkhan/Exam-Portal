@@ -17,5 +17,5 @@ public interface UserService {
 	public void deleteUser(Long userId);
 	
 	//update user
-	public User updateUser(User user);
+	public User updateUser(User user) throws Exception;
 }

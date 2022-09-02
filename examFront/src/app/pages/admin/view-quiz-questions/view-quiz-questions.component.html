@@ -2,7 +2,7 @@
 <div class="container text-center mb20px">
     <button mat-raised-button color="primary" [routerLink]="'/admin/add-question/'+quizId+'/'+quizTitle">Add Question</button>
 </div>
-<div class="bootstrap-wrapper" *ngIf="length; else notFound">
+<div class="bootstrap-wrapper" *ngIf="questions">
     <div class="row">
         <div class="col-md-12">
             <mat-card *ngFor="let question of questions; let i = index" class="mb10px">
@@ -49,6 +49,5 @@
         </div>
     </div>
 </div>
-<ng-template #notFound>
-  <app-not-found></app-not-found>
-</ng-template>
+
+  <app-not-found *ngIf="questions?.length == 0"></app-not-found>

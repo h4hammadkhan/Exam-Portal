@@ -44,6 +44,17 @@ public class User implements UserDetails {
 	}
 	
 	
+	
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", userName=" + userName + ", password=" + password + ", firstName=" + firstName
+				+ ", lastName=" + lastName + ", email=" + email + ", phone=" + phone + ", enabled=" + enabled
+				+ ", profile=" + profile + ", userRoles=" + userRoles + "]";
+	}
+
+
+
 
 	public Set<UserRole> getUserRoles() {
 		return userRoles;

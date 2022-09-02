@@ -14,7 +14,6 @@ export class ViewQuizQuestionsComponent implements OnInit {
   quizId!:number;
   quizTitle!:string;
   questions!:Question[];
-  length= false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -40,9 +39,6 @@ export class ViewQuizQuestionsComponent implements OnInit {
         console.log(data);
         this.questions = data;
         // console.log(this.questions.length);
-        if(this.questions.length){
-          this.length = true;
-        }
       },
       (error)=>{
         console.log(error);

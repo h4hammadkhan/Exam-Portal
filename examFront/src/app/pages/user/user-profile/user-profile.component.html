@@ -1,0 +1,138 @@
+<mat-card>
+  <!-- <h1 mat-subheader>Your Profile Details</h1> -->
+  <mat-card-content>
+      
+      <div class="bootstrap-wrapper">
+
+          <div class="container-fluid">
+              <div class="row">
+                  <div class="col-lg-4">
+                      <div class="card customcard boxShadow p-3 mb-5">
+                          
+                          <div class="container text-center">
+                              <img src="{{user.profile}}" alt="" class="img-fluid img-thumbnail noboder">
+                          </div> 
+                          
+                          <div class="row">
+                              
+                              <div class="col-md-12 margin">
+                                  
+                                  <h2 class="mt1-5rem bold">My Profile</h2>
+
+                                  <div class="table-responsive">
+                                      <table class="table table-striped tableSize">
+
+                                          <tbody>
+                                              <tr>
+                                                  <p>{{user.firstName}} {{user.lastName}}</p>
+                                                  <p>{{user.email || "---"}}</p>
+                                                  <p>{{user.phone || "---"}}</p>
+                                                  <p>{{user.authorities[0].authority || "---"}}</p>                          
+                                              </tr>
+                                          </tbody>
+                                      </table>
+                                  </div>
+                                                                          
+                              </div>
+                          
+                          </div>
+      
+                      </div>
+                  </div>
+                  <div class="col-lg-8">
+                      <div class="card customcard boxShadow ">
+                          <div class="row">
+                              <div class="col-md-10 offset-1">
+                                 <h1 class="bold mt30px mb30px">Edit Profile</h1>
+                              </div>
+                          </div>
+                          <mat-divider></mat-divider>
+                          <div class="row">
+                              <div class="col-md-12">
+                                  <mat-card-content class="mt40px">
+                                      <form class="formSize margin" [formGroup]="userForm" (ngSubmit)="updateUser()">
+                                          <input type="text" formControlName="id" required="" hidden>
+      
+                                          <div class="row">
+                                              <div class="col-md-6">    
+                                                  <mat-form-field class="full-width" appearance="outline">
+                                                      <mat-label>First Name</mat-label>
+                                                      <input type="text" matInput formControlName="firstName" >
+                                                      <mat-error *ngIf="getFields['firstName'].errors?.['required']">first name is required</mat-error>
+                                                      <!-- [value]="user.firstName" -->
+                                                    </mat-form-field>
+                                              </div>
+                                              <div class="col-md-6">    
+                                                  <mat-form-field class="full-width" appearance="outline">
+                                                      <mat-label>Last Name</mat-label>
+                                                      <input type="text" matInput formControlName="lastName" >
+                                                      <mat-error *ngIf="getFields['lastName'].errors?.['required']">last name is required</mat-error>
+
+                                                      <!-- [value]="user.lastName" -->
+                                                  </mat-form-field>
+                                                </div>
+                                                
+                                              </div>
+                                              
+                                              
+                                              <mat-form-field class="full-width" appearance="outline">
+                                                <mat-label>User Name</mat-label>
+                                                <input type="text" matInput formControlName="userName">
+                                                <mat-hint>Username must be unique</mat-hint>
+                                                <mat-error *ngIf="getFields['userName'].errors?.['required']">user name is required</mat-error>
+                                                <!-- [value]="user.userName" -->
+                                              </mat-form-field>
+                                    
+                                          
+                                          
+                                          <div class="row">
+                                              <div class="col-md-6"> 
+                                                  <mat-form-field class="full-width" appearance="outline">
+                                                    <mat-label>Password</mat-label>
+                                                    <input formControlName="password" matInput [type]="hide ? 'password' : 'text'">
+                                                    <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                                    </button>
+                                                    <mat-hint>provide Current password</mat-hint>
+                                                    <mat-error *ngIf="getFields['password'].errors?.['untouched'] || getFields['password'].errors?.['required'] ">Current password is required</mat-error>
+                                                    <mat-error *ngIf="getFields['password'].errors?.['untouched'] || getFields['password'].errors?.['minlength']">password must minimum of 8 characters longer</mat-error>
+                                                  </mat-form-field>
+                                              </div>
+                                              <div class="col-md-6">
+                                                  <mat-form-field class="full-width" appearance="outline">
+                                                      <mat-label>Phone</mat-label>
+                                                      <input type="text" matInput formControlName="phone">
+                                                      <mat-error *ngIf="getFields['phone'].errors?.['required']">phone is required</mat-error>
+                                                      <!-- [value]="user.phone" -->
+                                                  </mat-form-field>
+                                              </div>
+                                          </div>
+
+                                          
+                                          <mat-form-field class="full-width" appearance="outline">
+                                              <mat-label>Email</mat-label>
+                                              <input type="text" matInput formControlName="email">
+                                              <mat-error *ngIf="getFields['email'].errors?.['required']">email is required</mat-error>
+                                          </mat-form-field>
+
+                                          <mat-card-actions class="text-center">
+                                              <button mat-raised-button color="primary" type="submit">UPDATE</button>
+                                          </mat-card-actions>      
+      
+                                          <!-- {{userForm.value | json }} -->
+                                      </form>
+
+                                  </mat-card-content>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+         
+          </div>
+
+      </div>
+
+     
+  </mat-card-content>
+</mat-card>

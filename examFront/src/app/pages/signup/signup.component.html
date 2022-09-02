@@ -26,8 +26,8 @@
                             <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                             </button>
-                            <mat-error *ngIf="getFields['userName'].untouched || getFields['password'].errors?.['required'] ">Password is required</mat-error>
-                            <mat-error *ngIf="getFields['userName'].errors?.['untouched'] || getFields['password'].errors?.['minlength']">password must minimum of 8 characters longer</mat-error>
+                            <mat-error *ngIf="getFields['password'].errors?.['untouched'] || getFields['password'].errors?.['required'] ">Password is required</mat-error>
+                            <mat-error *ngIf="getFields['password'].errors?.['untouched'] || getFields['password'].errors?.['minlength']">password must minimum of 8 characters longer</mat-error>
                             <!-- <input [(ngModel)]="user.password" name="password" type="password" matInput placeholder="Enter Password">   -->
                         </mat-form-field>
 

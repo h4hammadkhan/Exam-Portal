@@ -1,3 +1,8 @@
-<app-navbar></app-navbar>
+<ngx-ui-loader fgsColor="#fff" pbColor="#fff" [fgsSize]="100" fgsType="three-strings"  [pbThickness]="5" text="Please wait.." overlayColor="rbg(0,0,0,.8)"></ngx-ui-loader>
 
-<router-outlet></router-outlet>
+<div ngxUiLoaderBlurred [blur]="5">
+    <app-navbar></app-navbar>
+
+    <!-- dynamic content -->
+    <router-outlet></router-outlet>
+</div>

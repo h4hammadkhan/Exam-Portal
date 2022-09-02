@@ -75,7 +75,9 @@ public class UserController {
 	
 	// update user
 	@PutMapping("/update")
-	public User updateUser(@RequestBody User user) {
+	public User updateUser(@RequestBody User user) throws Exception {
+		user.setProfile("assets/profile/default.png");
+		user.setPassword(this.bCryptPasswordEncoder.encode(user.getPassword()));
 		return this.userService.updateUser(user);
 	}
 	

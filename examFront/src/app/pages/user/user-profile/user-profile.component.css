@@ -1,0 +1,45 @@
+
+*{
+    box-sizing: border-box;
+}
+
+.noboder{
+    border: none;
+}
+
+.boxShadow{
+    box-shadow:  0rem 0rem 1rem rgba(0,0,0, .15);
+}
+
+.bold{
+    font-weight: bold;
+}
+.mt1-5rem{
+    margin-top: 3rem;
+}
+
+.margin{
+    margin: 0 5%;
+}
+.tableSize{
+    width: 90%;
+}
+
+.customcard{
+    border-radius: 30px;
+    border: none;
+    box-sizing: border-box;
+}
+
+.formSize{
+    width: 90%;
+
+}
+
+.mt30px{
+    margin-top: 30px;
+}
+.mb30px{
+    margin-bottom: 30px;
+}
+

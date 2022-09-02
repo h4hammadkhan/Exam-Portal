@@ -1,0 +1,30 @@
+.boxShadow{
+    box-shadow:  0rem 0rem 1rem rgba(0,0,0, .15);
+}
+.customcard{
+    border-radius: 10px;
+    border: none;
+    box-sizing: border-box;
+}
+
+.ml20px{
+    margin-left: 20px;
+}
+
+.block{
+    display: inline-block;
+}
+
+.iconSize{
+    transform: scale(1.5);
+}
+
+.margin-t-15{
+    margin: -15px 0 0 0;
+}
+
+.font{
+    font-size: 10rem;
+    font-weight: 600;
+}
+

@@ -27,9 +27,29 @@ export class NavbarComponent implements OnInit {
     })
   }
 
+
+  showDashboard_user_admin(){
+    if(this.loginService.getRole() == "ADMIN"){
+      this.router.navigate(['/admin/']);
+    }
+    else if(this.loginService.getRole() == "NORMAL"){
+      this.router.navigate(['/user-dashboard/0']);
+    }
+  }
+
   logout(){
     this.loginService.logout();
     this.loginService.loginStatusSubject.next(false);
     this.router.navigate(['login']);
+  }
+
+  Proflie_User_OR_Admin(){
+    if(this.loginService.getUser().authorities[0].authority == 'ADMIN'){
+      this.router.navigate(['/admin/profile'])
+      
+    }else{
+      console.log(this.loginService.getUser().authorities[0].authority);
+      this.router.navigate(['/user-dashboard/profile'])
+    }
   }
 }

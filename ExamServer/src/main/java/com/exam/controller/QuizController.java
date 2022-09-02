@@ -1,5 +1,7 @@
 package com.exam.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.exam.model.exam.Category;
 import com.exam.model.exam.Quiz;
 import com.exam.service.QuizService;
 
@@ -54,6 +57,34 @@ public class QuizController {
 	public void deleteQuiz(@PathVariable("quizId") Long quizId) {
 		this.quizService.deleteQuiz(quizId);
 	}
+	
+	@GetMapping("category/all/{categoryId}")
+	public List<Quiz> getQuizzesOfCategory(@PathVariable("categoryId") Long categoryId){
+		
+		Category category = new Category();
+		category.setId(categoryId);
+		return this.quizService.getQuizzesOfCategory(category);
+	}
+	
+	
+	//get active quizzes
+	@GetMapping("/active-quiz")
+	public List<Quiz> getActiveQuizzes(){
+		return this.quizService.getActiveQuizzes();
+	}
+	
+	
+	//get active quizzes of category
+	@GetMapping("/category/active-quiz/{categoryId}")
+	public List<Quiz> getActiveQuizzesOfCategory(@PathVariable("categoryId") Long categoryId){
+		Category category = new Category();
+		category.setId(categoryId);
+		return this.quizService.getActiveQuizzesOfCategory(category);
+	}
+	
+	
+	
+	
 	
 	
 }

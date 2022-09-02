@@ -1,9 +1,12 @@
+<div class="container text-center mt20px mb20px">
+    <button routerLink="/admin/add-quiz" mat-raised-button color="primary">Add New Quiz</button>
+</div>
 
 <mat-card class="mt10px" *ngFor="let q of quizzes">
     <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>  
         <mat-card-title>
-            {{q.title}}
+            {{q?.title}}
         </mat-card-title>
 
         <mat-card-subtitle>
@@ -31,11 +34,11 @@
                 Delete
             </button>
             
-            <button  mat-icon-button color="primary" class="mr" *ngIf="q.active">
+            <button  mat-icon-button color="primary" class="mr" *ngIf="!q.active">
                 <mat-icon>unpublished</mat-icon> Active
             </button>
 
-            <button  mat-icon-button  class="mr greenColor" *ngIf="!q.active" >
+            <button  mat-icon-button  class="mr greenColor" *ngIf="q.active" >
                 <mat-icon>check_circle</mat-icon> Active
             </button>
       
@@ -43,6 +46,3 @@
     </mat-card-actions>
 </mat-card>
 
-<div class="container text-center mt20px">
-    <button routerLink="/admin/add-quiz" mat-raised-button color="primary">Add New Quiz</button>
-</div>

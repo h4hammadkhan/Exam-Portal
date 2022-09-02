@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { User } from '../model/user';
 import { Userlogin } from '../model/userlogin';
 import baseUrl from './helper';
@@ -10,13 +10,13 @@ import baseUrl from './helper';
 })
 export class LoginService {
 
-  public loginStatusSubject = new Subject<boolean>();
+public loginStatusSubject = new Subject<boolean>();
 
 constructor(private http:HttpClient) { }
 
   // get current user: which is logged in
-  public getCurrentUser(){
-    return this.http.get(`${baseUrl}/current-user`);
+  public getCurrentUser(): Observable<User>{
+    return this.http.get<User>(`${baseUrl}/current-user`);
   }
 
   //generate token

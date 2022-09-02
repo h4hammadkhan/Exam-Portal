@@ -3,6 +3,7 @@ package com.exam.service.impl;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.exam.Repo.RoleRepository;
@@ -63,9 +64,17 @@ public class UserServiceImpl implements UserService {
 
 
 	@Override
-	public User updateUser(User user) {
+	public User updateUser(User user) throws Exception {
 		
-		return this.userRepository.save(user);
+		User local = this.userRepository.findByUserName(user.getUserName());
+//		
+		if(local!=null && local.getId()!=user.getId()) {
+			System.out.println("User is already there !!");
+			System.out.println(local.toString());
+			throw new UserFoundException(); 
+		}else {	
+			return this.userRepository.save(user);
+		}
 	}
 	
 	

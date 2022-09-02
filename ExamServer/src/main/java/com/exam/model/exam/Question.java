@@ -7,6 +7,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 public class Question {
@@ -28,7 +32,12 @@ public class Question {
 	
 	private String option4;
 	
+	//@JsonIgnore // this will ignore the field sending to the client
+		// JsonIgnore ignore both sides get and set 
 	private String answer;
+	
+	@Transient // not included in database
+	private String givenAnswer;
 	
 	
 	@ManyToOne(fetch = FetchType.EAGER)
@@ -110,11 +119,15 @@ public class Question {
 	}
 
 
+	//@JsonIgnore // ignore while getting answer
+		// NORMAL user won't able to see answer that's good but...
+		//this will create a problem, ADMIN won't able to see answer  
 	public String getAnswer() {
 		return answer;
 	}
 
 
+	//@JsonProperty("answer") // do not ignore while setting the answer
 	public void setAnswer(String answer) {
 		this.answer = answer;
 	}
@@ -128,6 +141,17 @@ public class Question {
 	public void setQuiz(Quiz quiz) {
 		this.quiz = quiz;
 	}
+
+
+	public String getGivenAnswer() {
+		return givenAnswer;
+	}
+
+
+	public void setGivenAnswer(String givenAnswer) {
+		this.givenAnswer = givenAnswer;
+	}
+	
 	
 	
 	

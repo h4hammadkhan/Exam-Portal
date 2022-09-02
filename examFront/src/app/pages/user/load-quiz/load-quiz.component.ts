@@ -14,6 +14,8 @@ export class LoadQuizComponent implements OnInit {
   cateId!:number;
   quizzes!:Quiz[];
 
+
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private quizService:QuizService,
@@ -24,15 +26,15 @@ export class LoadQuizComponent implements OnInit {
     
     this.activatedRoute.params.subscribe(
       (param)=>{
-        
         this.cateId = param['cateId'];
 
         if(this.cateId==0){
           console.log("Load all the quiz");
-          this.quizService.getquizzes().subscribe(
+          this.quizService.getActiveQuizzes().subscribe(
             (data:Quiz[])=>{
               this.quizzes = data;
               console.log(this.quizzes);
+      
             },
             (error)=>{
               Swal.fire("Error !!","Error in loading quizzes !!","error");
@@ -40,10 +42,10 @@ export class LoadQuizComponent implements OnInit {
             }
           );
     
-        }else if(this.cateId>0){
+        }else{
           console.log("Load specific quiz");
-          this.quizService.getQuiz(this.cateId).subscribe(
-            (data:any)=>{
+          this.quizService.getActiveQuizzesOfCategory(this.cateId).subscribe(
+            (data:Quiz[])=>{
               this.quizzes = data;
               console.log(this.quizzes);
             },
